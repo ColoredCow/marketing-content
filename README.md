@@ -8,6 +8,7 @@ This repo contains:
 - /newsletters — public newsletter editions
 - /brochures — public brochures and capability one-pagers
 - /social — content banks and post scripts
+- /podcast - podcast
 
 **How we publish**
 - Drafts live in PRs in this repo.
