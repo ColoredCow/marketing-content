@@ -5,7 +5,7 @@ Welcome! Thank you for helping us build ColoredCow’s voice, craft, and culture
 ## How to Contribute
 1. **Fork the repository**  
 2. **Create a new branch** for your work  
-git checkout -b my-feature
+```git checkout -b my-feature```
 3. **Add your content** inside `/templates` (if creating a new template) or `/content` (if submitting a draft)  
 4. **Use the appropriate Issue Template**:
 - `Content Piece` for blogs, newsletters, social posts
