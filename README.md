@@ -9,6 +9,9 @@ This repo contains:
 - /brochures — public brochures and capability one-pagers
 - /social — content banks and post scripts
 - /podcast - podcast
+- /video - video
+- /reel - reels
+- /short-form - short-form video
 
 **How we publish**
 - Drafts live in PRs in this repo.
