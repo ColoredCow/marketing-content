@@ -19,7 +19,7 @@ This repo contains:
 - Contributors: fork → add draft → create PR (see /CONTRIBUTING.md)
 
 **Want to contribute?**
-- Read `/CONTRIBUTING.md` for assignment and submission instructions.
+- Read **[CONTRIBUTING.md](CONTRIBUTING.md)** for assignment and submission instructions.
 - If you’d like to apply for our Founding Writer role, check `/evaluation/assignments`.
 
 **Note:** This repo is also used as a hiring magnet — tasks and example exercises are visible for candidates to try.
