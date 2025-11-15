@@ -1,0 +1,32 @@
+- name: "type: strategy"
+  color: "1f77b4"
+
+- name: "type: ia"
+  color: "2ca02c"
+
+- name: "type: content"
+  color: "ff7f0e"
+
+- name: "type: case-study"
+  color: "9467bd"
+
+- name: "type: research"
+  color: "8c564b"
+
+- name: "priority: high"
+  color: "d62728"
+
+- name: "status: in-progress"
+  color: "17becf"
+
+- name: "status: blocked"
+  color: "e377c2"
+
+- name: "status: review"
+  color: "7f7f7f"
+
+- name: "area: hiring"
+  color: "bcbd22"
+
+- name: "area: sales"
+  color: "aec7e8"
