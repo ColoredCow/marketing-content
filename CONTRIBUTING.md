@@ -8,7 +8,19 @@ Welcome! Thank you for helping us build ColoredCow’s voice, craft, and culture
 ```git checkout -b my-feature```
 3. **Add your content** inside `/templates` (if creating a new template) or `/content` (if submitting a draft)  
 4. **Use the appropriate Issue Template**:
-- `Content Piece` for blogs, newsletters, social posts
+Use the appropriate template from `/templates`:
+
+- [case-study.md](./templates/case-study.md) — for client or internal project stories
+- [blog.md](./templates/blog.md) — for blogs and thought leadership posts
+- [newsletter.md](./templates/newsletter.md) — for newsletters
+- [social-post.md](./templates/social-post.md) — for social media posts
+- [sales-onepager.md](./templates/sales-onepager.md) — for sales collateral
+- [brochure.md](./templates/brochure.md) — for brochures
+- [podcast.md](./templates/podcast.md) — for podcast episodes
+- [video.md](./templates/video.md) — for full-length videos
+- [reel.md](./templates/reel.md) — for short-form vertical videos
+- [short-form.md](./templates/short-form.md) — for short written content snippets
+
 - Reference a strategy or portfolio issue if needed
 5. **Open a Pull Request (PR)**  
 - Link the issue you are working on  
