@@ -37,6 +37,32 @@ Use the appropriate template from `/templates`:
 - Feedback will be provided in the PR comments  
 - Approved PRs will be merged into the main branch
 
+### Approval & Merge
+
+Once feedback is incorporated and approved:
+
+- PR is merged into `main`.
+- Content is now officially part of the repo and can be used, published, or adapted.
+
+---
+
+### Tracking Metrics
+
+- Track engagement, adoption, or internal usage as per the KPIs defined in `marketing-core`.
+- Document outcomes in the relevant issue for reference.
+
+---
+
+### Notes for Candidates
+
+This workflow is designed for both internal contributors and candidate evaluation.
+
+Completing a PR following this process allows assessment of:
+
+- Understanding of ColoredCow’s voice & themes
+- Ability to follow structure & templates
+- Writing, design, or multimedia execution
+- Responsiveness to feedback
 ## Code of Conduct
 Be respectful, constructive, and collaborative.
 
