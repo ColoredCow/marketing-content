@@ -15,7 +15,7 @@ jobs:
         run: |
           # test
           mkdir -p marketing-content/test/services
-          touch marketing-contenttest/services/about-us.md
+          touch marketing-content/test/services/about-us.md
 
       - name: Commit and push changes
         run: |
