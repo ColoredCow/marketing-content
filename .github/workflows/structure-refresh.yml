@@ -1,59 +1,69 @@
-name: Refresh marketing-content structure
+name: Setup Marketing Content Structure
 
 on:
   workflow_dispatch:
 
 jobs:
-  update-structure:
+  setup-content-structure:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-
-      - name: Create new folder structure
+      - name: Create marketing-content structure
         run: |
-          # website
+          # Website structure
           mkdir -p website/services
           mkdir -p website/careers
           mkdir -p website/case-studies
+
           touch website/homepage-copy.md
           touch website/about-us.md
 
-          # blogs
-          mkdir -p blogs/drafts
-          mkdir -p blogs/published
+          # Blog structure
+          mkdir -p blog/drafts
+          mkdir -p blog/published
 
-          # social
+          # Social structure
           mkdir -p social/linkedin
           mkdir -p social/instagram
           mkdir -p social/twitter
 
-          # newsletters
+          # Newsletters structure
           mkdir -p newsletters/talent
           mkdir -p newsletters/tech
           mkdir -p newsletters/impact
 
-          # collateral
+          # Collateral structure
           mkdir -p collateral/capability-deck
           mkdir -p collateral/domain-one-pagers
           touch collateral/ai-approach.md
           touch collateral/maintenance-approach.md
           touch collateral/sales-pitch-templates.md
 
+          # Videos
+          mkdir -p videos
 
-          # README placeholder
-          echo "# marketing-content" > README.md
+          # Main README
+          cat > README.md << 'EOF'
+# ColoredCow · marketing-content
+
+This repo contains all **public-facing marketing assets**:
+- Website copy
+- Blogs (drafts & published)
+- Social media posts
+- Newsletters
+- Collaterals & decks
+- Videos
+
+Each folder is structured to mirror the website IA & publication workflow.
+
+EOF
 
       - name: Commit changes
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add .
-          git commit -m "Refreshed marketing-content structure and removed legacy folders" || echo "No changes to commit"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.8.0
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: "Setup marketing-content structure"
+          commit_options: "--no-verify"
+          push_options: "--force"
+          file_pattern: "."
