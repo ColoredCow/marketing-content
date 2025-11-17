@@ -1,4 +1,4 @@
-name: Setup Marketing Content Structure
+name: Setup Marketing Content
 
 on:
   workflow_dispatch:
@@ -6,12 +6,11 @@ on:
 jobs:
   setup-folders:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Create marketing content folder structure
+      - name: Create marketing-content folder structure
         run: |
           mkdir -p website/services
           mkdir -p website/careers
@@ -33,16 +32,17 @@ jobs:
 
           mkdir -p collateral/capability-deck
           mkdir -p collateral/domain-one-pagers
+
           touch collateral/ai-approach.md
           touch collateral/maintenance-approach.md
           touch collateral/sales-pitch-templates.md
 
           touch README.md
 
-      - name: Commit and push changes
+      - name: Commit folder structure
         run: |
           git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.email "actions@github.com"
           git add .
-          git commit -m "Setup marketing-content folder structure" || echo "No changes to commit"
+          git commit -m "Setup marketing-content structure" || echo "No changes to commit"
           git push
