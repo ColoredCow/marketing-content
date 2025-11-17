@@ -13,36 +13,9 @@ jobs:
 
       - name: Create folder structure
         run: |
-          # Website
-          mkdir -p website/services
-          mkdir -p website/careers
-          mkdir -p website/case-studies
-          touch website/homepage-copy.md
-          touch website/about-us.md
-
-          # Blogs
-          mkdir -p blogs/drafts
-          mkdir -p blogs/published
-
-          # Social
-          mkdir -p social/linkedin
-          mkdir -p social/instagram
-          mkdir -p social/twitter
-
-          # Newsletters
-          mkdir -p newsletters/talent
-          mkdir -p newsletters/tech
-          mkdir -p newsletters/impact
-
-          # Collateral
-          mkdir -p collateral/capability-deck
-          mkdir -p collateral/domain-one-pagers
-          touch collateral/ai-approach.md
-          touch collateral/maintenance-approach.md
-          touch collateral/sales-pitch-templates.md
-
-          # Root README
-          touch README.md
+          # test
+          mkdir -p marketing-content/test/services
+          touch marketing-contenttest/services/about-us.md
 
       - name: Commit and push changes
         run: |
