@@ -1,35 +1,55 @@
-name: Setup Marketing Content Folders with Descriptive READMEs
+name: Setup Marketing Content Structure
 
 on:
   workflow_dispatch:
 
 jobs:
-  create-folders:
+  setup:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
 
-      - name: Create folder structure with detailed README
+      - name: Create folder structure
         run: |
-          # Create folders
-          mkdir -p blogs case-studies social newsletters brochures videos podcasts reels campaigns
+          echo "Cleaning old folders…"
+          rm -rf blog blogs case-studies social newsletters brochures website templates collateral
 
-          # Add detailed README.md files
-          echo -e "# Blogs\n\nContains all blog content authored by ColoredCow, including drafts, published posts, and editorial notes." > blogs/README.md
-          echo -e "# Case Studies\n\nHouses project case studies detailing challenges, approach, solutions, and outcomes." > case-studies/README.md
-          echo -e "# Social Media Content\n\nAll content created for social platforms, including posts, graphics, captions, and campaigns." > social/README.md
-          echo -e "# Newsletters\n\nNewsletters and mailing content, including templates and published editions." > newsletters/README.md
-          echo -e "# Brochures\n\nPublic-facing marketing collateral such as brochures, pamphlets, and PDF resources." > brochures/README.md
-          echo -e "# Videos\n\nVideo content, including promotional, educational, and internal culture videos." > videos/README.md
-          echo -e "# Podcasts\n\nPodcast episodes, scripts, and production notes." > podcasts/README.md
-          echo -e "# Reels\n\nShort-form video content for social media and marketing campaigns." > reels/README.md
-          echo -e "# Campaigns\n\nDocumentation of cross-channel marketing campaigns, themes, and timelines." > campaigns/README.md
+          echo "Creating new folder structure…"
 
-      - name: Commit & push
+          mkdir -p website/services
+          mkdir -p website/careers
+          mkdir -p website/case-studies
+
+          touch website/homepage-copy.md
+          touch website/about-us.md
+
+          mkdir -p blog/drafts
+          mkdir -p blog/published
+
+          mkdir -p social/linkedin
+          mkdir -p social/instagram
+          mkdir -p social/twitter
+
+          mkdir -p newsletters/talent
+          mkdir -p newsletters/tech
+          mkdir -p newsletters/impact
+
+          mkdir -p collateral/capability-deck
+          mkdir -p collateral/domain-one-pagers
+
+          touch collateral/ai-approach.md
+          touch collateral/maintenance-approach.md
+          touch collateral/sales-pitch-templates.md
+
+          touch README.md
+
+      - name: Commit and push changes
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
           git add .
-          git commit -m "Create marketing content folder structure with descriptive READMEs"
+          git commit -m "Setup marketing-content structure" || echo "No changes to commit"
           git push
