@@ -1,28 +1,25 @@
-name: Create Blogs Folder
+name: Test Blogs Folder
 
 on:
   workflow_dispatch:
 
 jobs:
-  create-blogs:
+  create-folders:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
       - name: Create blogs folder
         run: |
           mkdir -p blogs/drafts
           mkdir -p blogs/published
-          echo "# Blogs" > blogs/README.md
-          echo "# Drafts" > blogs/drafts/README.md
-          echo "# Published" > blogs/published/README.md
+          echo "Test" > blogs/README.md
 
-      - name: Commit and push changes
+      - name: Commit and push
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
           git add .
-          git commit -m "Create blogs folder structure" || echo "No changes to commit"
+          git commit -m "Create blogs folders"
           git push
