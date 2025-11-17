@@ -1,7 +1,7 @@
 name: Setup Marketing Content Folders
 
 on:
-  workflow_dispatch: # Allows manual trigger
+  workflow_dispatch:
 
 jobs:
   create-folders:
@@ -11,17 +11,50 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Create folder structure
+      - name: Create folder structure with placeholders
         run: |
-          # test
-          mkdir -p marketing-content/test/services
-          touch marketing-content/test/services/about-us.md
+          # Helper function to create folder with .gitkeep
+          create_folder() {
+            mkdir -p "$1"
+            touch "$1/.gitkeep"
+          }
+
+          # Website
+          create_folder website/services
+          create_folder website/careers
+          create_folder website/case-studies
+          touch website/homepage-copy.md
+          touch website/about-us.md
+
+          # Blogs
+          create_folder blogs/drafts
+          create_folder blogs/published
+
+          # Social
+          create_folder social/linkedin
+          create_folder social/instagram
+          create_folder social/twitter
+
+          # Newsletters
+          create_folder newsletters/talent
+          create_folder newsletters/tech
+          create_folder newsletters/impact
+
+          # Collateral
+          create_folder collateral/capability-deck
+          create_folder collateral/domain-one-pagers
+          touch collateral/ai-approach.md
+          touch collateral/maintenance-approach.md
+          touch collateral/sales-pitch-templates.md
+
+          # Root README
+          touch README.md
 
       - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "GitHub Actions"
           git add .
-          git commit -m "Initial marketing-content folder structure"
+          git commit -m "Initial marketing-content folder structure with placeholders"
           git push
-        continue-on-error: true # In case folders already exist
+        continue-on-error: true
