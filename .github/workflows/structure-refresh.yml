@@ -4,57 +4,52 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup-content-folders:
+  setup-folders:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Create marketing-content structure
+      - name: Create folder structure
         run: |
-          # Base directory
-          mkdir -p marketing-content
+          # Website
+          mkdir -p website/services
+          mkdir -p website/careers
+          mkdir -p website/case-studies
+          touch website/homepage-copy.md
+          touch website/about-us.md
 
-          # Website structure
-          mkdir -p marketing-content/website/services
-          mkdir -p marketing-content/website/careers
-          mkdir -p marketing-content/website/case-studies
-          touch marketing-content/website/homepage-copy.md
-          touch marketing-content/website/about-us.md
+          # Blog
+          mkdir -p blog/drafts
+          mkdir -p blog/published
 
-          # Blog structure
-          mkdir -p marketing-content/blogs/drafts
-          mkdir -p marketing-content/blogs/published
+          # Social
+          mkdir -p social/linkedin
+          mkdir -p social/instagram
+          mkdir -p social/twitter
 
-          # Social structure
-          mkdir -p marketing-content/social/linkedin
-          mkdir -p marketing-content/social/instagram
-          mkdir -p marketing-content/social/twitter
+          # Newsletters
+          mkdir -p newsletters/talent
+          mkdir -p newsletters/tech
+          mkdir -p newsletters/impact
 
-          # Newsletters structure
-          mkdir -p marketing-content/newsletters/talent
-          mkdir -p marketing-content/newsletters/tech
-          mkdir -p marketing-content/newsletters/impact
-
-          # Collateral structure
-          mkdir -p marketing-content/collateral/capability-deck
-          mkdir -p marketing-content/collateral/domain-one-pagers
-          touch marketing-content/collateral/ai-approach.md
-          touch marketing-content/collateral/maintenance-approach.md
-          touch marketing-content/collateral/sales-pitch-templates.md
+          # Collateral
+          mkdir -p collateral/capability-deck
+          mkdir -p collateral/domain-one-pagers
+          touch collateral/ai-approach.md
+          touch collateral/maintenance-approach.md
+          touch collateral/sales-pitch-templates.md
 
           # README
-          touch marketing-content/README.md
+          touch README.md
 
       - name: Commit changes
         run: |
-          git config --local user.name "GitHub Actions"
-          git config --local user.email "actions@github.com"
-          git add marketing-content
-          git commit -m "Create marketing-content folder structure" || echo "No changes to commit"
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Setup marketing-content folder structure" || echo "No changes to commit"
 
       - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push
