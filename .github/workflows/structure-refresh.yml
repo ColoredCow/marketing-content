@@ -4,66 +4,57 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup-content-structure:
+  setup-content-folders:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Create marketing-content structure
         run: |
-          # Website structure
-          mkdir -p website/services
-          mkdir -p website/careers
-          mkdir -p website/case-studies
+          # Base directory
+          mkdir -p marketing-content
 
-          touch website/homepage-copy.md
-          touch website/about-us.md
+          # Website structure
+          mkdir -p marketing-content/website/services
+          mkdir -p marketing-content/website/careers
+          mkdir -p marketing-content/website/case-studies
+          touch marketing-content/website/homepage-copy.md
+          touch marketing-content/website/about-us.md
 
           # Blog structure
-          mkdir -p blog/drafts
-          mkdir -p blog/published
+          mkdir -p marketing-content/blogs/drafts
+          mkdir -p marketing-content/blogs/published
 
           # Social structure
-          mkdir -p social/linkedin
-          mkdir -p social/instagram
-          mkdir -p social/twitter
+          mkdir -p marketing-content/social/linkedin
+          mkdir -p marketing-content/social/instagram
+          mkdir -p marketing-content/social/twitter
 
           # Newsletters structure
-          mkdir -p newsletters/talent
-          mkdir -p newsletters/tech
-          mkdir -p newsletters/impact
+          mkdir -p marketing-content/newsletters/talent
+          mkdir -p marketing-content/newsletters/tech
+          mkdir -p marketing-content/newsletters/impact
 
           # Collateral structure
-          mkdir -p collateral/capability-deck
-          mkdir -p collateral/domain-one-pagers
-          touch collateral/ai-approach.md
-          touch collateral/maintenance-approach.md
-          touch collateral/sales-pitch-templates.md
+          mkdir -p marketing-content/collateral/capability-deck
+          mkdir -p marketing-content/collateral/domain-one-pagers
+          touch marketing-content/collateral/ai-approach.md
+          touch marketing-content/collateral/maintenance-approach.md
+          touch marketing-content/collateral/sales-pitch-templates.md
 
-          # Videos
-          mkdir -p videos
-
-          # Main README
-          cat > README.md << 'EOF'
-# ColoredCow · marketing-content
-
-This repo contains all **public-facing marketing assets**:
-- Website copy
-- Blogs (drafts & published)
-- Social media posts
-- Newsletters
-- Collaterals & decks
-- Videos
-
-Each folder is structured to mirror the website IA & publication workflow.
-
-EOF
+          # README
+          touch marketing-content/README.md
 
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add marketing-content
+          git commit -m "Create marketing-content folder structure" || echo "No changes to commit"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
         with:
-          commit_message: "Setup marketing-content structure"
-          commit_options: "--no-verify"
-          push_options: "--force"
-          file_pattern: "."
+          github_token: ${{ secrets.GITHUB_TOKEN }}
