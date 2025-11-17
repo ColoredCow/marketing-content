@@ -1,55 +1,54 @@
-name: Setup Marketing Content Structure
+name: Setup Marketing Content Folders
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
-  setup:
+  create-folders:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
 
       - name: Create folder structure
         run: |
-          echo "Cleaning old folders…"
-          rm -rf blog blogs case-studies social newsletters brochures website templates collateral
-
-          echo "Creating new folder structure…"
-
+          # Website
           mkdir -p website/services
           mkdir -p website/careers
           mkdir -p website/case-studies
-
           touch website/homepage-copy.md
           touch website/about-us.md
 
-          mkdir -p blog/drafts
-          mkdir -p blog/published
+          # Blogs
+          mkdir -p blogs/drafts
+          mkdir -p blogs/published
 
+          # Social
           mkdir -p social/linkedin
           mkdir -p social/instagram
           mkdir -p social/twitter
 
+          # Newsletters
           mkdir -p newsletters/talent
           mkdir -p newsletters/tech
           mkdir -p newsletters/impact
 
+          # Collateral
           mkdir -p collateral/capability-deck
           mkdir -p collateral/domain-one-pagers
-
           touch collateral/ai-approach.md
           touch collateral/maintenance-approach.md
           touch collateral/sales-pitch-templates.md
 
+          # Root README
           touch README.md
 
       - name: Commit and push changes
         run: |
-          git config --local user.email "actions@github.com"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "GitHub Actions"
           git add .
-          git commit -m "Setup marketing-content structure" || echo "No changes to commit"
+          git commit -m "Initial marketing-content folder structure"
           git push
+        continue-on-error: true # In case folders already exist
