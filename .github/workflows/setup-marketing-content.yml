@@ -4,62 +4,45 @@ on:
   workflow_dispatch:
 
 jobs:
-  create-structure:
+  setup-folders:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Create folder structure
+      - name: Create marketing content folder structure
         run: |
-          # Website
           mkdir -p website/services
           mkdir -p website/careers
           mkdir -p website/case-studies
+
           touch website/homepage-copy.md
           touch website/about-us.md
 
-          # Blog
           mkdir -p blog/drafts
           mkdir -p blog/published
 
-          # Social
           mkdir -p social/linkedin
           mkdir -p social/instagram
           mkdir -p social/twitter
 
-          # Newsletters
           mkdir -p newsletters/talent
           mkdir -p newsletters/tech
           mkdir -p newsletters/impact
 
-          # Collateral
           mkdir -p collateral/capability-deck
           mkdir -p collateral/domain-one-pagers
           touch collateral/ai-approach.md
           touch collateral/maintenance-approach.md
           touch collateral/sales-pitch-templates.md
 
-          # README
-          echo "# Marketing Content Repository" > README.md
+          touch README.md
 
-      - name: Commit changes
+      - name: Commit and push changes
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
           git add .
           git commit -m "Setup marketing-content folder structure" || echo "No changes to commit"
-
-      - name: Push changes
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.repos.createOrUpdateFileContents({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              path: "README.md",
-              message: "Add README.md",
-              content: Buffer.from("# Marketing Content Repository").toString('base64'),
-              sha: null
-            })
+          git push
