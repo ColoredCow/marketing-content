@@ -1,0 +1,67 @@
+name: Refresh marketing-content structure
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-structure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Remove legacy folders
+        run: |
+          rm -rf blogs
+          rm -rf case-studies
+          rm -rf social
+          rm -rf newsletters
+          rm -rf brochures
+
+      - name: Create new folder structure
+        run: |
+          # website
+          mkdir -p website/services
+          mkdir -p website/careers
+          mkdir -p website/case-studies
+          touch website/homepage-copy.md
+          touch website/about-us.md
+
+          # blogs
+          mkdir -p blogs/drafts
+          mkdir -p blogs/published
+
+          # social
+          mkdir -p social/linkedin
+          mkdir -p social/instagram
+          mkdir -p social/twitter
+
+          # newsletters
+          mkdir -p newsletters/talent
+          mkdir -p newsletters/tech
+          mkdir -p newsletters/impact
+
+          # collateral
+          mkdir -p collateral/capability-deck
+          mkdir -p collateral/domain-one-pagers
+          touch collateral/ai-approach.md
+          touch collateral/maintenance-approach.md
+          touch collateral/sales-pitch-templates.md
+
+
+
+          # README placeholder
+          echo "# marketing-content" > README.md
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "Refreshed marketing-content structure and removed legacy folders" || echo "No changes to commit"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
