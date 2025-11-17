@@ -11,13 +11,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Remove legacy folders
-        run: |
-          rm -rf blogs
-          rm -rf case-studies
-          rm -rf social
-          rm -rf newsletters
-          rm -rf brochures
 
       - name: Create new folder structure
         run: |
@@ -48,7 +41,6 @@ jobs:
           touch collateral/ai-approach.md
           touch collateral/maintenance-approach.md
           touch collateral/sales-pitch-templates.md
-
 
 
           # README placeholder
