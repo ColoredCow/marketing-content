@@ -1,55 +1,58 @@
-name: Setup Marketing Content Structure
+name: Setup marketing-content structure
 
 on:
   workflow_dispatch:
 
 jobs:
-  setup-folders:
+  setup:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repo
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Create folder structure
+      - name: Create folder structure inside marketing-content/
         run: |
-          # Website
-          mkdir -p website/services
-          mkdir -p website/careers
-          mkdir -p website/case-studies
-          touch website/homepage-copy.md
-          touch website/about-us.md
+          BASE="marketing-content"
 
-          # Blog
-          mkdir -p blog/drafts
-          mkdir -p blog/published
+          # Clean old folders if they exist
+          rm -rf $BASE/blogs
+          rm -rf $BASE/blog
+          rm -rf $BASE/website/services
+          rm -rf $BASE/website/careers
+          rm -rf $BASE/website/case-studies
 
-          # Social
-          mkdir -p social/linkedin
-          mkdir -p social/instagram
-          mkdir -p social/twitter
+          # Create new structure
+          mkdir -p $BASE/website/services
+          mkdir -p $BASE/website/careers
+          mkdir -p $BASE/website/case-studies
+          touch   $BASE/website/homepage-copy.md
+          touch   $BASE/website/about-us.md
 
-          # Newsletters
-          mkdir -p newsletters/talent
-          mkdir -p newsletters/tech
-          mkdir -p newsletters/impact
+          mkdir -p $BASE/blogs/drafts
+          mkdir -p $BASE/blogs/published
 
-          # Collateral
-          mkdir -p collateral/capability-deck
-          mkdir -p collateral/domain-one-pagers
-          touch collateral/ai-approach.md
-          touch collateral/maintenance-approach.md
-          touch collateral/sales-pitch-templates.md
+          mkdir -p $BASE/social/linkedin
+          mkdir -p $BASE/social/instagram
+          mkdir -p $BASE/social/twitter
 
-          # README
-          touch README.md
+          mkdir -p $BASE/newsletters/talent
+          mkdir -p $BASE/newsletters/tech
+          mkdir -p $BASE/newsletters/impact
 
-      - name: Commit changes
+          mkdir -p $BASE/collateral/capability-deck
+          mkdir -p $BASE/collateral/domain-one-pagers
+          touch   $BASE/collateral/ai-approach.md
+          touch   $BASE/collateral/maintenance-approach.md
+          touch   $BASE/collateral/sales-pitch-templates.md
+
+          # Create README
+          touch $BASE/README.md
+
+      - name: Commit and push changes
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
           git add .
-          git commit -m "Setup marketing-content folder structure" || echo "No changes to commit"
-
-      - name: Push changes
-        run: |
+          git commit -m "Setup standardized marketing-content folder structure" || echo "No changes to commit"
           git push
