@@ -4,38 +4,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  create-blogs:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      # STEP 1 — create top-level folder only
-      - name: Create top-level blogs folder
-        run: |
-          mkdir -p blogs
-          echo "# Blogs" > blogs/README.md
-
-      - name: Commit step 1
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add .
-          git commit -m "Step 1: create top-level blogs folder" || echo "No changes"
-
-      # STEP 2 — create nested folders now that parent exists
-      - name: Create nested blog folders
+      - name: Create blogs structure
         run: |
           mkdir -p blogs/drafts
           mkdir -p blogs/published
-          echo "# Drafts" > blogs/drafts/README.md
-          echo "# Published" > blogs/published/README.md
 
-      - name: Commit step 2
+      - name: Commit changes
         run: |
-          git add .
-          git commit -m "Step 2: create nested blogs folders" || echo "No changes"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add blogs
+          git commit -m "Add blogs structure" || echo "No changes to commit"
 
       - name: Push changes
         run: |
