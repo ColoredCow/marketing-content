@@ -1,32 +1,118 @@
-- name: "type: strategy"
+# 🎯 Strategy Labels
+- name: "strategy:narrative"
   color: "1f77b4"
 
-- name: "type: ia"
-  color: "2ca02c"
+- name: "strategy:positioning"
+  color: "1f77b4"
 
-- name: "type: content"
-  color: "ff7f0e"
+- name: "strategy:website"
+  color: "1f77b4"
 
-- name: "type: case-study"
+- name: "strategy:framework"
+  color: "1f77b4"
+
+- name: "strategy:ia"
+  color: "1f77b4"
+
+
+# 📝 Content Types
+- name: "content:case-study"
   color: "9467bd"
 
-- name: "type: research"
+- name: "content:blog"
+  color: "9467bd"
+
+- name: "content:linkedin"
+  color: "9467bd"
+
+- name: "content:newsletter"
+  color: "9467bd"
+
+- name: "content:website-page"
+  color: "9467bd"
+
+- name: "content:resource"
+  color: "9467bd"
+
+- name: "content:founder-story"
+  color: "9467bd"
+
+- name: "content:project-analysis"
+  color: "9467bd"
+
+
+# 🔧 Work Stages
+- name: "stage:research"
   color: "8c564b"
 
-- name: "priority: high"
-  color: "d62728"
+- name: "stage:drafting"
+  color: "8c564b"
 
-- name: "status: in-progress"
+- name: "stage:review"
+  color: "8c564b"
+
+- name: "stage:edit"
+  color: "8c564b"
+
+- name: "stage:ready"
+  color: "8c564b"
+
+- name: "stage:published"
+  color: "8c564b"
+
+- name: "stage:blocked"
+  color: "8c564b"
+
+
+# 🗂 Repository
+- name: "repo:marketing-core"
   color: "17becf"
 
-- name: "status: blocked"
+- name: "repo:marketing-content"
+  color: "17becf"
+
+- name: "repo:portfolio-analysis"
+  color: "17becf"
+
+- name: "repo:marketing-operations"
+  color: "17becf"
+
+
+# 🔥 Priority
+- name: "priority:high"
+  color: "d62728"
+
+- name: "priority:medium"
+  color: "d62728"
+
+- name: "priority:low"
+  color: "d62728"
+
+
+# 👤 Ownership (Optional)
+- name: "owner:founder"
   color: "e377c2"
 
-- name: "status: review"
-  color: "7f7f7f"
+- name: "owner:marketing-lead"
+  color: "e377c2"
 
-- name: "area: hiring"
-  color: "bcbd22"
+- name: "owner:content-writer"
+  color: "e377c2"
 
-- name: "area: sales"
-  color: "aec7e8"
+- name: "owner:design"
+  color: "e377c2"
+  
+- name: "type:task"
+  color: "1d76db"   # blue
+
+- name: "type:idea"
+  color: "bfd4f2"   # light blue
+
+- name: "type:bug"
+  color: "d73a4a"   # red
+
+- name: "type:discussion"
+  color: "7057ff"   # purple
+
+- name: "type:automation"
+  color: "0e8a16"   # green
