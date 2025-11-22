@@ -1,0 +1,24 @@
+name: Auto-move issues
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  move:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const label = context.payload.label.name;
+            const issue = context.payload.issue;
+
+            const columnMap = {
+              "stage:research": "Discovery & Research",
+              "stage:drafting": "Drafting",
+              "stage:review": "Review — Founder",
+              "stage:edit": "Editing & Proofing",
+              "stage:ready": "Ready to Publish",
+              "stage:published": "Published"
+            };
