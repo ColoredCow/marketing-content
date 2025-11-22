@@ -1,0 +1,94 @@
+name: Create Issues from issues.md
+
+on:
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  create_issues:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Read issues file
+        id: readfile
+        run: |
+          FILE="issues.md"
+          echo "content<<EOF" >> $GITHUB_OUTPUT
+          cat "$FILE" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create issues
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const content = `${{ steps.readfile.outputs.content }}`;
+            const lines = content.split("\n");
+
+            let currentTitle = null;
+            let currentLabels = [];
+            let bodyLines = [];
+            const issues = [];
+
+            function pushIssue() {
+              if (!currentTitle) return;
+              issues.push({
+                title: currentTitle.trim(),
+                body: bodyLines.join("\n").trim(),
+                labels: currentLabels
+              });
+              currentTitle = null;
+              currentLabels = [];
+              bodyLines = [];
+            }
+
+            for (let line of lines) {
+              if (line.startsWith("## ")) {
+                pushIssue();
+                currentTitle = line.replace("## ", "").trim();
+              } else if (line.startsWith("**Labels:**")) {
+                const labelText = line.replace("**Labels:**", "").trim();
+                currentLabels = labelText.split(",").map(l => l.trim());
+              } else if (line.startsWith("---")) {
+                continue;
+              } else {
+                bodyLines.push(line);
+              }
+            }
+            pushIssue();
+
+            console.log("Parsed issues:", issues.length);
+
+            const existingIssues = await github.paginate(
+              github.rest.issues.listForRepo,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: "all",
+                per_page: 100
+              }
+            ).then(data => data.map(issue => issue.title));
+
+            console.log("Existing issue titles:", existingIssues);
+
+            for (let issue of issues) {
+              if (existingIssues.includes(issue.title)) {
+                console.log("Skipping existing issue:", issue.title);
+                continue;
+              }
+
+              console.log("Creating issue:", issue.title);
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: issue.title,
+                body: issue.body,
+                labels: issue.labels,
+              });
+            }
