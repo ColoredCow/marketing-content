@@ -18,6 +18,7 @@ turn a meaningful idea into a credible, technically sound, investor-ready produc
 
 ---
 
+<a id="how-we-help"></a>
 # ⭐ How We Help Founders  
 ### (A clarity-first, founder-first approach)
 
@@ -41,6 +42,7 @@ Our work often includes:
 
 ---
 
+<a id="sparklegacy"></a>
 # ⭐ A Recent Founder Story: SparkLegacy  
 
 SparkLegacy approached us with a deeply complex cross-domain idea:  
@@ -65,6 +67,7 @@ working inside the urgency, ambiguity, and ambition of deep-tech founders.
 
 ---
 
+<a id="domains"></a>
 # ⭐ Which Domains Do We Help Founders Build In?
 
 ### **We work across founder-driven domains including:**  
@@ -84,6 +87,7 @@ We help founders navigate these with clarity, feasibility, and long-term thinkin
 
 ---
 
+<a id="technologies"></a>
 # ⭐ Which Technologies Do Founders Build With Us?
 
 Founders typically bring us ideas involving:
@@ -103,6 +107,7 @@ and long-term scalability.
 
 ---
 
+<a id="full-vision-mvp"></a>
 # ⭐ Full Vision vs MVP — Our Founder Philosophy  
 
 Most founders feel pressure to build a lot, very fast.
@@ -128,6 +133,7 @@ while building the right MVP at the right time.
 
 ---
 
+<a id="clarity-call"></a>
 # ⭐ Clarity Call (45 minutes)
 
 A direct conversation with our founder (Prateek).  
@@ -142,6 +148,7 @@ Founders often leave saying:
 
 ---
 
+<a id="founder-insights"></a>
 # ⭐ Founder Insights (Coming Soon)  
 Short, powerful insights from real founders we’ve worked with:
 
@@ -155,6 +162,7 @@ This will evolve into an ongoing learning loop.
 
 ---
 
+<a id="proof-library"></a>
 # ⭐ Proof Library (Coming Soon)
 
 We are building a library of:
@@ -170,10 +178,11 @@ This will act as a public demonstration of how we think and work.
 
 ---
 
+<a id="faq"></a>
 # ⭐ FAQ
 
 ### **How do you help founders who have limited budgets?**  
-We design MVPs that are credible, defensible, and aligned with your long-term vision — not shortcuts.
+We design meaningful MVPs aligned with long-term vision, ensuring credibility without overbuilding.
 
 ### **Do you work with pre-seed or idea-stage founders?**  
 Yes. Many founders start with us when all they have is an idea and a strong intention.
@@ -182,7 +191,7 @@ Yes. Many founders start with us when all they have is an idea and a strong inte
 Through technical clarity sessions, architecture reasoning, and simplifying AI/blockchain complexity into meaningful product decisions.
 
 ### **Can you help with investor or accelerator prep?**  
-Yes. Our clarity-first process helps you communicate complexity simply and convincingly.
+Yes. Our clarity-first process helps founders communicate complexity simply and convincingly.
 
 ### **Do you only work with founders?**  
 No — but founders are a major part of our monthly active clients.  
@@ -190,6 +199,7 @@ We built this section because they consistently trust us early.
 
 ---
 
+<a id="cta"></a>
 # ⭐ Ready to Build With Clarity?
 
 **→ Book a Clarity Call**  
@@ -207,10 +217,6 @@ Let’s explore your idea and build something meaningful together.
   "@type": "WebPage",
   "name": "For Founders - ColoredCow",
   "description": "ColoredCow’s founder-first approach to building deep-tech, AI, blockchain, and secure workflow products with clarity, honesty, and craftsmanship.",
-  "about": {
-    "@type": "Thing",
-    "name": "Founder Product Development"
-  },
   "publisher": {
     "@type": "Organization",
     "name": "ColoredCow"
